@@ -20,8 +20,8 @@ app //__dirname est devenue import.meta.dirname
   .use(favicon(import.meta.dirname + "/assets/apple-icon-144x144.png"))
   //.use(morgan("dev"))  Pour les infos sur les requete faite a l'api avec le navigateur
   .use(express.json()) //Rendre les requete en format JSON (rendre les body du format string au format object javascript exploitable)
-  .use(cors());
-// .use(express.static("public")); Servir fichier statique juste pour tester rien a voir avec le reste de l'api
+  .use(cors())
+  .use(express.static("public")); // Servir fichier statique juste pour tester rien a voir avec le reste de l'api
 
 sequelize.initDb();
 
