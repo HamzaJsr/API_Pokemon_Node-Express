@@ -7,9 +7,9 @@ export default (sequelize, DataTypes) => {
     },
     username: {
       type: DataTypes.STRING,
-      unique: {
-        msg: "Ce nom est déja pris",
-      },
+      // unique: {
+      //   msg: "Ce nom est déja pris",
+      // },
     },
     password: {
       type: DataTypes.STRING,
