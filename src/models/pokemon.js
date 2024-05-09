@@ -8,6 +8,12 @@ const validTypes = [
   "Normal",
   "Electrik",
   "Fée",
+  "Combat",
+  "Sol",
+  "Acier",
+  "Roche",
+  "Psy",
+  "Glace",
 ];
 export default (sequelize, DataTypes) => {
   // sequelize.define("nom de table", {atributs de la tables id, name...}, {options})
@@ -46,7 +52,7 @@ export default (sequelize, DataTypes) => {
             msg: "Les points de vie doivent être superieur ou egal à 0",
           },
           max: {
-            args: [1000],
+            args: [255],
             msg: "Les points de vie ne peuvent êtres de plus de 1000 ",
           },
         },
@@ -61,11 +67,11 @@ export default (sequelize, DataTypes) => {
           notNull: { msg: "Les points d'attaques est une donnée obligatoire." },
           min: {
             args: [0],
-            msg: "Les points de vie ne peut être negatif",
+            msg: "Les points d'attaques ne peut être negatif",
           },
           max: {
-            args: [100],
-            msg: "Les points de vie ne peuvent êtres de plus de 1000 ",
+            args: [165],
+            msg: "Les points d'attaques ne peuvent êtres de plus de 1000 ",
           },
         },
       },
@@ -94,9 +100,9 @@ export default (sequelize, DataTypes) => {
             if (!value) {
               throw new Error("Un pokemon doit avoir au moins un types");
             }
-            if (value.split(",").length > 3) {
+            if (value.split(",").length > 2) {
               throw new Error(
-                "Un pokémon ne peut pas avoir plus de trois types"
+                "Un pokémon ne peut pas avoir plus de deux types"
               );
             }
             value.split(",").forEach((type) => {
