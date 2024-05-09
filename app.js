@@ -9,7 +9,6 @@ import createPokemon from "./src/routes/createPokemon.js";
 import updatePokemon from "./src/routes/updatePokemon.js";
 import deletePokemon from "./src/routes/deletePokemon.js";
 import login from "./src/routes/login.js";
-import cors from "./src/routes/newFile.js";
 
 export const app = express();
 // On serveur ecoute sur le PORT specifier par Heroku quand il sera en production donc heroku vas creer la propriete PORT dans la variable
