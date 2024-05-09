@@ -61,7 +61,7 @@ export const initDb = () => {
           console.log(pokemonsDataCreated.toJSON())
         );
       });
-      //encrypté le mdp afin que la version sauvegardé en bdd soit encrypté
+      //encrypté le mdp afin que la version sauvegardé en bdd soit encrypté.
       bcrypt.hash("pikachu", 10).then((hash) => {
         User.create({
           username: "pikachu",
