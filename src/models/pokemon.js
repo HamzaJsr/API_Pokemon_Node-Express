@@ -23,7 +23,7 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         //les validateur/contrainte sont logiquement appeler que pour les phases de creation et modification
-        // unique: { msg: "Ce pokemon est deja présent" },
+        unique: { msg: "Ce pokemon est deja présent" },
         validate: {
           isAlpha: {
             msg: "Uniquement des lettres pour le nom de pokémon.",
