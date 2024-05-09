@@ -1,4 +1,4 @@
-import { Sequelize, DataTypes } from "sequelize";
+import { Sequelize, DataTypes, where } from "sequelize";
 import PokemonModel from "../models/pokemon.js";
 import UserModel from "../models/user.js";
 import pokemonsData from "./mock-pokemon.js";
@@ -50,23 +50,39 @@ export const initDb = () => {
     .then((_) => {
       console.log(`La base de données Pokedex a bien été synchronisée`);
       // Creation d'une ligne dans la table Pokemons (creation d'un pokemon)
-      pokemons.map((pokemon) => {
-        Pokemon.create({
-          name: pokemon.name,
-          hp: pokemon.hp,
-          cp: pokemon.cp,
-          picture: pokemon.picture,
-          types: pokemon.types,
-        }).then((pokemonsDataCreated) =>
-          console.log(pokemonsDataCreated.toJSON())
-        );
+      pokemons.forEach((pokemon) => {
+        return Pokemon.findOrCreate({
+          where: { name: pokemon.name },
+          defaults: {
+            hp: pokemon.hp,
+            cp: pokemon.cp,
+            picture: pokemon.picture,
+            types: pokemon.types,
+          },
+        }).then(([pokemon, created]) => {
+          if (created) {
+            console.log("Nouveau Pokémon créé :", pokemon.toJSON());
+          } else {
+            console.log("Le Pokémon existe déjà :", pokemon.toJSON());
+          }
+        });
       });
       //encrypté le mdp afin que la version sauvegardé en bdd soit encrypté.
       bcrypt.hash("pikachu", 10).then((hash) => {
-        User.create({
-          username: "pikachu",
-          password: hash,
-        }).then((user) => console.log(user.toJSON()));
+        User.findOrCreate({
+          where: {
+            username: "pikachu",
+          },
+          defaults: {
+            password: hash,
+          },
+        }).then(([user, created]) => {
+          if (created) {
+            console.log("Nouvel utilisateur créé :", user.toJSON());
+          } else {
+            console.log("L'utilisateur existe déjà :", user.toJSON());
+          }
+        });
       });
     })
     .catch((error) => console.log(`${error}`));
