@@ -9,6 +9,7 @@ import createPokemon from "./src/routes/createPokemon.js";
 import updatePokemon from "./src/routes/updatePokemon.js";
 import deletePokemon from "./src/routes/deletePokemon.js";
 import login from "./src/routes/login.js";
+import cors from "cors";
 
 export const app = express();
 // On serveur ecoute sur le PORT specifier par Heroku quand il sera en production donc heroku vas creer la propriete PORT dans la variable
@@ -18,9 +19,9 @@ const port = process.env.PORT || 3000;
 app //__dirname est devenue import.meta.dirname
   .use(favicon(import.meta.dirname + "/assets/apple-icon-144x144.png"))
   //.use(morgan("dev"))  Pour les infos sur les requete faite a l'api avec le navigateur
-  .use(express.json()); //Rendre les requete en format JSON (rendre les body du format string au format object javascript exploitable)
+  .use(express.json()) //Rendre les requete en format JSON (rendre les body du format string au format object javascript exploitable)
+  .use(cors());
 // .use(express.static("public")); Servir fichier statique juste pour tester rien a voir avec le reste de l'api
-// cors(app);
 
 sequelize.initDb();
 
