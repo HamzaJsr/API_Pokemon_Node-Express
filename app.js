@@ -1,5 +1,5 @@
 import express from "express";
-import morgan from "morgan";
+// import morgan from "morgan";
 import favicon from "serve-favicon";
 // import bodyParser from "body-parser"; Plus besoin car integrer à express
 import * as sequelize from "./src/db/sequelize.js";
@@ -17,7 +17,7 @@ const port = process.env.PORT || 3000;
 
 app //__dirname est devenue import.meta.dirname
   .use(favicon(import.meta.dirname + "/assets/apple-icon-144x144.png"))
-  .use(morgan("dev")) // Pour les infos sur les requete faite a l'api avec le navigateur
+  //.use(morgan("dev"))  Pour les infos sur les requete faite a l'api avec le navigateur
   .use(express.json()); //Rendre les requete en format JSON (rendre les body du format string au format object javascript exploitable)
 // .use(express.static("public")); Servir fichier statique juste pour tester rien a voir avec le reste de l'api
 // cors(app);
