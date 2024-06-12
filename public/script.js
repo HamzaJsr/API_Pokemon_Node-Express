@@ -71,7 +71,7 @@ const reponse = await fetch(
   {
     headers: {
       authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxNTI3NTIwNCwiZXhwIjoxNzE1MzYxNjA0fQ.92rzKKIpoLkoxMvLL5Y7o6hOmf19UcGrMom4-J5tscg",
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxODE4NzQ3MiwiZXhwIjoxNzE4MjczODcyfQ.PyM8pmDTIbNdG3v7hwcsnkYlegZ-_MKac3_TKlj3kz0",
     },
   }
 );
